@@ -1,0 +1,1 @@
+# 2 -Wpf_sqllite_Translator_Net48---v05-29.05.22
