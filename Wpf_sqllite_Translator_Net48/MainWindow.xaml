@@ -1,0 +1,79 @@
+﻿<Window x:Class="Wpf_sqllite_Translator_Net48.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpf_sqllite_Translator_Net48"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="527" Width="877" ResizeMode="NoResize" SizeToContent="Manual" WindowStartupLocation="CenterScreen">
+    <Grid Margin="0,0,0,3">
+
+        <Button Content="Create Database" Click="btnCreateDatabase_Click" HorizontalAlignment="Left" Height="32" Margin="10,51,0,0" VerticalAlignment="Top" Width="114" Background="#FF21B116"/>
+        <TextBox x:Name="txtbx_Datenbankname" HorizontalAlignment="Left" Height="20" Margin="9,114,0,0" TextWrapping="Wrap" Text="xxx_SqLite.file.db" VerticalAlignment="Top" Width="115" Foreground="Black"/>
+
+        <ListView x:Name="listViewSQLite"  SelectionChanged="ListView_TargetUpdated" Width="470" Height="142" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="192,164,0,0" ItemsSource="{Binding Path=CollectionProperty, NotifyOnTargetUpdated=True}" 
+	        SelectedIndex="0" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Id" Width="50"  DisplayMemberBinding="{Binding Id}"/>
+                    <GridViewColumn Header="Deutsch"  Width="100" DisplayMemberBinding="{Binding Deutsch}"/>
+                    <GridViewColumn Header="Englisch"  Width="100" DisplayMemberBinding="{Binding Englisch}"/>
+                    <GridViewColumn Header="Französisch"  Width="100" DisplayMemberBinding="{Binding Französisch}"/>
+                    <GridViewColumn Header="Chinesisch"  Width="100" DisplayMemberBinding="{Binding Chinesisch}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Content="Insert All from DB" Click="Insert_from_db_to_Listview" HorizontalAlignment="Left" Height="23" Margin="192,138,0,0" VerticalAlignment="Top" Width="114" Background="#FF26E017"/>
+        <Label Content="Database:" HorizontalAlignment="Left" Height="32" Margin="9,91,0,0" VerticalAlignment="Top" Width="63" Foreground="Black"/>
+        <Button Content="Set" Click="Datenbankname_Set_Click"  HorizontalAlignment="Left" Height="23" Margin="127,113,0,0" VerticalAlignment="Top" Width="31" Background="#FF26E017" RenderTransformOrigin="-0.194,0.654"/>
+        <Label Content="SqLite Wort - Baustein - Translator" HorizontalAlignment="Left" Margin="219,7,0,0" VerticalAlignment="Top" Width="380" Height="41" FontWeight="Bold" FontSize="22"/>
+        <CheckBox x:Name="McCheckBox_InLanguage_Deutsch" Checked="McCheckBox_InLanguage_Deutsch_Checkedchanched" Content="DE - Deutsch" HorizontalAlignment="Left" Height="16" Margin="192,61,0,0" VerticalAlignment="Top" Width="110" Panel.ZIndex="2"/>
+        <CheckBox x:Name="McCheckBox_InLanguage_Englisch" Checked="McCheckBox_InLanguage_Englisch_Checkedchanched" Content="EN - Englisch" HorizontalAlignment="Left" Height="16" Margin="192,77,0,0" VerticalAlignment="Top" Width="110" Panel.ZIndex="2"/>
+        <CheckBox x:Name="McCheckBox_InLanguage_Franzoesisch" Checked="McCheckBox_InLanguage_Franzoesisch_Checkedchanched" Content="FR - Französisch" HorizontalAlignment="Left" Height="16" Margin="192,93,0,0" VerticalAlignment="Top" Width="110" Panel.ZIndex="2"/>
+        <CheckBox x:Name="McCheckBox_InLanguage_Chinesisch" Checked="McCheckBox_InLanguage_Chinesisch_Checkedchanched" Content="CH - Chinesisch" HorizontalAlignment="Left" Height="16" Margin="192,109,0,0" VerticalAlignment="Top" Width="110" Panel.ZIndex="2"/>
+        <Label Content="Ausgang Text:" HorizontalAlignment="Left" Height="32" Margin="338,355,0,0" VerticalAlignment="Top" Width="90"/>
+        <Label Content="Seperierung:" HorizontalAlignment="Left" Height="32" Margin="334,100,0,0" VerticalAlignment="Top" Width="89"/>
+        <TextBox x:Name="txtbx_Eingang_Text_Sep1" HorizontalAlignment="Left" Height="18" Margin="335,124,0,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="63" Panel.ZIndex="2"/>
+        <TextBox x:Name="txtbx_Eingang_Text_Sep2" HorizontalAlignment="Left" Height="18" Margin="401,124,0,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="63" Panel.ZIndex="2"/>
+        <TextBox x:Name="txtbx_Eingang_Text_Sep3" HorizontalAlignment="Left" Height="18" Margin="467,124,0,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="63" Panel.ZIndex="2"/>
+        <TextBox x:Name="txtbx_Eingang_Text_Sep4" HorizontalAlignment="Left" Height="18" Margin="533,124,0,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="63" Panel.ZIndex="2"/>
+        <TextBox x:Name="txtbx_Eingang_Text_Sep5" HorizontalAlignment="Left" Height="18" Margin="599,124,0,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="63" Panel.ZIndex="2"/>
+        <Label Content="          v 0.5&#xA;29.05.2022" HorizontalAlignment="Left" Height="44" Margin="613,10,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label Content="Seperierung:" HorizontalAlignment="Left" Height="32" Margin="338,307,0,0" VerticalAlignment="Top" Width="90"/>
+        <TextBox x:Name="txtbx_Ausgang_Text_Sep1" HorizontalAlignment="Left" Height="18" Margin="336,332,0,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="64" Panel.ZIndex="2"/>
+        <TextBox x:Name="txtbx_Ausgang_Text_Sep2" HorizontalAlignment="Left" Height="18" Margin="404,332,0,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="62" Panel.ZIndex="2"/>
+        <TextBox x:Name="txtbx_Ausgang_Text_Sep3" HorizontalAlignment="Left" Height="18" Margin="470,332,0,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="62" Panel.ZIndex="2"/>
+        <TextBox x:Name="txtbx_Ausgang_Text_Sep4" HorizontalAlignment="Left" Height="18" Margin="536,332,0,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="62" Panel.ZIndex="2"/>
+        <TextBox x:Name="txtbx_Ausgang_Text_Sep5" HorizontalAlignment="Left" Height="18" Margin="602,332,0,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="62" Panel.ZIndex="2"/>
+        <TextBox x:Name="txtbx_Ausgang_Text_zusammen" HorizontalAlignment="Left" Height="18" Margin="336,378,0,0" TextWrapping="Wrap" Text="...." VerticalAlignment="Top" Width="282"/>
+        <Label Content="Eingang Text:" HorizontalAlignment="Left" Height="32" Margin="336,53,0,0" VerticalAlignment="Top" Width="89"/>
+        <TextBox x:Name="txtbx_Eingang_Text" HorizontalAlignment="Left" Height="18" Margin="334,78,0,0" TextWrapping="Wrap" Text="Einlauf Störung an der Maschine" VerticalAlignment="Top" Width="328"/>
+        <Button Content="Seperate" Click="Eingang_Text_Separate_Click"  HorizontalAlignment="Left" Height="23" Margin="667,75,0,0" VerticalAlignment="Top" Width="54" Background="#FF26E017" RenderTransformOrigin="-0.194,0.654"/>
+        <Button Content="Search + Checkup in DB&#xD;&#xA;+ Outbox txtbx" Click="Checkup_Einzel_wörter_in_DB_bringto_Listview_and_outboxes_Click"  HorizontalAlignment="Left" Height="36" Margin="666,125,0,0" VerticalAlignment="Top" Width="136" Background="#FF26E017" RenderTransformOrigin="-0.194,0.654"/>
+        <Button Content="Bring Together" Click="Answers_Bring_Together_Click"  HorizontalAlignment="Left" Height="24" Margin="670,329,0,0" VerticalAlignment="Top" Width="88" Background="#FF26E017" RenderTransformOrigin="-0.194,0.654"/>
+        <Button Content="Create Table+Columms" Click="Click_Create_Table" HorizontalAlignment="Left" Height="28" Margin="10,145,0,0" VerticalAlignment="Top" Width="122" Background="#FF81F313" FontSize="11"/>
+        <Button Content="File Table" Click="Click_Filling_Table" HorizontalAlignment="Left" Height="28" Margin="10,178,0,0" VerticalAlignment="Top" Width="122" Background="#FFD06912"/>
+        <Button Content="Open_Folder" Click="Open_Folder_Click" HorizontalAlignment="Left" Height="22" Margin="630,446,0,0" VerticalAlignment="Top" Width="82" RenderTransformOrigin="0.415,-5.298"/>
+        <Image Margin="98,228,668,156" Source="/Images/Deutschland.png" Stretch="UniformToFill" Panel.ZIndex="4"/>
+        <Image Margin="6,344,740,45" Source="/Images/Frankreich.png" Stretch="UniformToFill" Panel.ZIndex="4"/>
+        <Image Margin="3,209,767,179" Source="/Images/England.png" Stretch="UniformToFill" Panel.ZIndex="4"/>
+        <Image Margin="142,364,566,10" Source="/Images/China.png" Stretch="UniformToFill" Panel.ZIndex="4"/>
+        <CheckBox x:Name="McCheckBox_OutLanguage_Deutsch" Checked="McCheckBox_OutLanguage_Deutsch_Checkedchanched" Content="DE - Deutsch" HorizontalAlignment="Left" Height="16" Margin="747,61,0,0" VerticalAlignment="Top" Width="110" Panel.ZIndex="2"/>
+        <CheckBox x:Name="McCheckBox_OutLanguage_Englisch" Checked="McCheckBox_OutLanguage_Englisch_Checkedchanched" Content="EN - Englisch" HorizontalAlignment="Left" Height="16" Margin="747,76,0,0" VerticalAlignment="Top" Width="110" Panel.ZIndex="2"/>
+        <CheckBox x:Name="McCheckBox_OutLanguage_Franzoesisch" Checked="McCheckBox_OutLanguage_Franzoesisch_Checkedchanched" Content="FR - Französisch" HorizontalAlignment="Left" Height="16" Margin="747,92,0,0" VerticalAlignment="Top" Width="110" Panel.ZIndex="2"/>
+        <CheckBox x:Name="McCheckBox_OutLanguage_Chinesisch" Checked="McCheckBox_OutLanguage_Chinesisch_Checkedchanched" Content="CH - Chinesisch" HorizontalAlignment="Left" Height="16" Margin="747,108,0,0" VerticalAlignment="Top" Width="110"  Panel.ZIndex="2"/>
+        <Label Content="Eingang:" HorizontalAlignment="Left" Height="32" Margin="182,40,0,0" VerticalAlignment="Top" Width="89" FontWeight="Bold"/>
+        <Label Content="Ausgang:" HorizontalAlignment="Left" Height="32" Margin="736,40,0,0" VerticalAlignment="Top" Width="89" FontWeight="Bold"/>
+        <Button Content="del Listview &#xD;&#xA;+ Txtboxes" Click="del_all_txtboxes_Click" HorizontalAlignment="Left" Height="36" Margin="667,174,0,0" VerticalAlignment="Top" Width="77" Background="#FFEC0E0E"/>
+        <Button Content="    all&#xD;&#xA;Together" Click="All_Together_Click" HorizontalAlignment="Left" Height="51" Margin="680,227,0,0" VerticalAlignment="Top" Width="170" Background="#FFFB9409" FontWeight="Bold" FontSize="14"/>
+        <Button Content="del Out-Txtboxes" Click="del_out_txtboxes_Click" HorizontalAlignment="Left" Height="18" Margin="219,332,0,0" VerticalAlignment="Top" Width="112" Background="#FFEC0E0E"/>
+        <TextBox x:Name="txtbx_loop_Listview_eintraege" HorizontalAlignment="Left" Height="18" Margin="788,335,0,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="62" Panel.ZIndex="2"/>
+        <Label Content="Loop:" HorizontalAlignment="Left" Height="32" Margin="774,314,0,0" VerticalAlignment="Top" Width="90"/>
+        <Label Content="App Path:" HorizontalAlignment="Left" Height="32" Margin="340,414,0,0" VerticalAlignment="Top" Width="90"/>
+        <TextBox x:Name="txtbx_Appath" HorizontalAlignment="Left" Height="28" Margin="338,440,0,0" TextWrapping="Wrap" Text="....&#xD;&#xA;....." VerticalAlignment="Top" Width="282" FontSize="9" />
+        <Button Content="Button" Click="Checkbox_check" HorizontalAlignment="Left" Height="25" Margin="736,10,0,0" VerticalAlignment="Top" Width="89"/>
+        <Button Content="Restart" Click="App_Restart" HorizontalAlignment="Left" Height="22" Margin="766,420,0,0" VerticalAlignment="Top" Width="80" Background="#FF2CC221"/>
+        <Button Content="Close" Click="App_Close" HorizontalAlignment="Left" Height="22" Margin="765,446,0,0" VerticalAlignment="Top" Width="82" Background="#FFF21414"/>
+
+    </Grid>
+</Window>
